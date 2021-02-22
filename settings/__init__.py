@@ -1,19 +1,48 @@
 """settings
 """
+import json
+import yaml
 
 __author__ = "help@castellanidavide.it"
-__version__ = "1.0 2021-2-22"
+__version__ = "01.01 2021-02-22"
 
 class settings:
-	def __init__ (self):
+	def __init__ (self, file, format="yaml", json_indent=4):
 		"""Where it all begins
 		"""
-		print(settings.settings())
-	
-	def settings():
-		"""settings first funtion
+		assert(format in ["json", "yml", "yaml"])
+
+		# Setup variabiles
+		self.file = file
+		self.format = format
+		self.json_indent = json_indent
+
+	def read(self):
+		"""Return the settings into dict type
 		"""
-		return "settings" #for the test (see test_settings.py)
-		
+		input = open(self.file, "r+").read()
+
+		if self.format == "json":
+			return json.loads(input)
+		elif self.format in ["yml", "yaml"]:
+			return yaml.safe_load(input)
+
+	def write(self, dictionary):
+		"""Save file giving a dictionary as input
+		"""
+		assert(isinstance(dictionary, dict))
+
+		output = ""
+		if self.format == "json":
+			output = json.dumps(dictionary, indent=self.json_indent)
+		elif self.format in ["yml", "yaml"]:
+			output = yaml.dump(dictionary)
+
+		open(self.file, "w+").write(output)
+
 if __name__ == "__main__":
-	settings()
+	# Test yaml/ yml
+	settings("settings.yaml", format="yaml").write({"test": {1: "something", "two": ["something", "else"]}})
+
+	# Test json
+	settings("settings.json", format="json").write({"test": {1: "something", "two": ["something", "else"]}})

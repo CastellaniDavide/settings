@@ -1,8 +1,12 @@
 # settings
-[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)](https://github.com/CastellaniDavide/cpp-settings/blob/master/LICENSE) ![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat) ![Version](https://img.shields.io/badge/version-v1.0-blue?style=flat) ![Language Python](https://img.shields.io/badge/language-Python-yellowgreen?style=flat) ![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-All-blue?style=flat) [![On GitHub](https://img.shields.io/badge/on%20GitHub-True-green?style=flat&logo=github)](https://github.com/CastellaniDavide/settings)
+[![GitHub license](https://img.shields.io/badge/license-GNU-green?style=flat)](https://github.com/CastellaniDavide/cpp-settings/blob/master/LICENSE) ![Author](https://img.shields.io/badge/author-Castellani%20Davide-green?style=flat) ![Version](https://img.shields.io/badge/version-v01.01-blue?style=flat) ![Language Python](https://img.shields.io/badge/language-Python-yellowgreen?style=flat) ![sys.platform supported](https://img.shields.io/badge/OS%20platform%20supported-All-blue?style=flat) [![On GitHub](https://img.shields.io/badge/on%20GitHub-True-green?style=flat&logo=github)](https://github.com/CastellaniDavide/settings)
 
 ## Description
 Manage (read/ write) settings file in different formats (eg. JAML, JSON, ...)
+
+## Suppeorted standards
+ - json
+ - yaml/ yml
 
 ## Required
  - python3
@@ -31,13 +35,24 @@ Manage (read/ write) settings file in different formats (eg. JAML, JSON, ...)
  - setup.py
    
 ### Execution examples  
- - python3 settings.py
- - python3 test_settings.py
+ ```
+# Import
+from settings import settings
+
+# Inizialize
+mysettings = settings(file, format) # file = file path; format = one of "json", "yml", "yaml" (default "yaml")
+
+# Read
+mysettings.read()
+
+# Write
+mysettings.write(a_dictionary_with_your_settings)
+ ```
 
 # Changelog
- - [Version_1.0_2021-2-22](#Version_10_2021-2-22)
+ - [Version_01.01_2021-02-22](#Version_10_2021-02-22)
 
-## Version_1.0_2021-2-22
+## Version_01.01_2021-02-22
  - Initial version
 
 ---
