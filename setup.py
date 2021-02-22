@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 from requests import get
 
 setup(
-      name='settings',
+      name='settings_read_write',
       version=get("https://api.github.com/repos/CastellaniDavide/settings/tags").json()[0]['name'].replace("v", "") if len(get("https://api.github.com/repos/CastellaniDavide/settings/tags").json()) > 0 else "0.0", # Lastest release
       description=get("https://api.github.com/repos/CastellaniDavide/settings").json()['description'],
       long_description=get("https://raw.githubusercontent.com/CastellaniDavide/settings/master/docs/README.md").text,
